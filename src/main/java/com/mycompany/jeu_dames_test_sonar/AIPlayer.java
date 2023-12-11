@@ -144,7 +144,8 @@ public class AIPlayer extends Player
         }
         else // ...otherwise, choose at 50-50 random either the furthest forward or furthest back movable piece (to balance agressiveness)
         {
-            int randomNum = new Random().nextInt(2);
+	    Random random = new Random();        // Noncompliant - new instance created with each invocation
+      	    int randomNum = random.nextInt(2);	
             if (randomNum == 0)
             {
                 board.applyMoveToBoard(getKeyByValue(bestMovesPerPiece, furthestBackwardPiece), furthestBackwardPiece);
